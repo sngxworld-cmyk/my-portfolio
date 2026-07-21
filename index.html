@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>S.N. Gunawardena | Portfolio</title>
   <style>
-    /* Reset & Dark Stealth Theme */
+    /* Two-Color High Contrast Theme: Deep Obsidian (#0a0d14) & Electric Cyan (#00f0ff) */
     * {
       margin: 0;
       padding: 0;
@@ -14,18 +14,18 @@
     }
 
     :root {
-      --bg: #050508;
-      --card-bg: rgba(18, 18, 24, 0.7);
-      --card-border: rgba(255, 255, 255, 0.1);
-      --primary: #e0e6ed;
-      --text: #ffffff;
-      --text-muted: #9aa0a6;
-      --accent-silver: #8a94a6;
+      --bg-dark: #0a0d14;
+      --accent: #00f0ff;
+      --accent-hover: #00d4e6;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --card-border: rgba(0, 240, 255, 0.15);
+      --text-white: #ffffff;
+      --text-muted: #8e9bb0;
     }
 
     body {
-      background-color: var(--bg);
-      color: var(--text);
+      background-color: var(--bg-dark);
+      color: var(--text-white);
       overflow-x: hidden;
       min-height: 100vh;
       display: flex;
@@ -33,7 +33,7 @@
       justify-content: space-between;
     }
 
-    /* Animated Glowing Obsidian Background */
+    /* Ambient Background Glow */
     .glow-container {
       position: fixed;
       top: 0;
@@ -48,30 +48,22 @@
       position: absolute;
       border-radius: 50%;
       filter: blur(140px);
-      opacity: 0.25;
-      animation: float 14s infinite alternate ease-in-out;
+      opacity: 0.18;
+      background: var(--accent);
     }
 
     .glow-ball.one {
-      width: 450px;
-      height: 450px;
-      background: #2a2e3d;
-      top: -120px;
-      left: -120px;
+      width: 500px;
+      height: 500px;
+      top: -150px;
+      right: -100px;
     }
 
     .glow-ball.two {
-      width: 550px;
-      height: 550px;
-      background: #111420;
-      bottom: -180px;
-      right: -180px;
-      animation-delay: -7s;
-    }
-
-    @keyframes float {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(50px, 70px) scale(1.08); }
+      width: 400px;
+      height: 400px;
+      bottom: -150px;
+      left: -100px;
     }
 
     /* Navigation */
@@ -79,51 +71,51 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.2rem 8%;
-      backdrop-filter: blur(16px);
-      background: rgba(5, 5, 8, 0.85);
+      padding: 1.5rem 8%;
+      background: rgba(10, 13, 20, 0.9);
       border-bottom: 1px solid var(--card-border);
       position: sticky;
       top: 0;
       z-index: 100;
+      backdrop-filter: blur(12px);
     }
 
     .logo {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 800;
-      letter-spacing: 2px;
-      color: var(--primary);
+      letter-spacing: 1px;
+      color: var(--accent);
       text-transform: uppercase;
       cursor: pointer;
     }
 
     .nav-links {
       display: flex;
-      gap: 1.2rem;
+      gap: 1rem;
       flex-wrap: wrap;
     }
 
     .nav-btn {
       background: none;
-      border: none;
+      border: 1px solid transparent;
       color: var(--text-muted);
       font-size: 0.95rem;
       cursor: pointer;
-      padding: 0.4rem 0.8rem;
+      padding: 0.5rem 1rem;
       border-radius: 20px;
       transition: all 0.3s;
     }
 
     .nav-btn:hover, .nav-btn.active {
-      color: #ffffff;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--card-border);
+      color: var(--accent);
+      border-color: var(--card-border);
+      background: rgba(0, 240, 255, 0.05);
     }
 
-    /* Page View Mechanics */
+    /* Multi-Page Views */
     .page {
       display: none;
-      min-height: 80vh;
+      min-height: 82vh;
       padding: 3rem 10%;
       max-width: 1200px;
       margin: 0 auto;
@@ -138,68 +130,108 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(12px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Hero Section (Page 1) */
-    .hero {
-      display: flex;
-      justify-content: space-between;
+    /* PAGE 1: HERO LAYOUT (Matching Screenshot) */
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
       align-items: center;
       gap: 3rem;
-      flex-wrap: wrap-reverse;
       width: 100%;
     }
 
-    .hero-text {
-      flex: 1;
-      min-width: 300px;
+    @media (max-width: 850px) {
+      .hero-layout {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
     }
 
-    .hero-tag {
-      color: var(--accent-silver);
-      font-family: monospace;
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-      letter-spacing: 2px;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.5rem, 5vw, 3.8rem);
+    .hero-text h1 {
+      font-size: clamp(2.8rem, 5.5vw, 4.2rem);
       font-weight: 800;
       line-height: 1.1;
       margin-bottom: 1.5rem;
+      color: var(--text-white);
     }
 
-    .hero h1 span {
-      background: linear-gradient(180deg, #ffffff, #8a94a6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .hero-text h1 span {
+      color: var(--accent);
     }
 
-    .hero p {
+    .hero-text p {
       color: var(--text-muted);
-      font-size: 1.1rem;
-      max-width: 600px;
+      font-size: 1.15rem;
       line-height: 1.6;
-      margin-bottom: 2rem;
+      margin-bottom: 2.2rem;
+      max-width: 580px;
     }
 
-    .main-avatar {
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg-dark);
+      font-weight: 700;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image-wrapper::before {
+      content: '';
+      position: absolute;
       width: 280px;
-      height: 280px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--card-border);
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.08);
+      height: 340px;
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      z-index: 1;
+      transform: rotate(-3deg);
     }
 
-    /* General Page Layouts & Grid */
+    .portrait-img {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 320px;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* General Grid & Cards */
     .section-title {
       font-size: 2.2rem;
       margin-bottom: 2rem;
-      color: var(--primary);
+      color: var(--accent);
     }
 
     .grid {
@@ -214,19 +246,18 @@
       border: 1px solid var(--card-border);
       border-radius: 16px;
       padding: 2rem;
-      backdrop-filter: blur(12px);
       transition: transform 0.3s, border-color 0.3s;
     }
 
     .card:hover {
       transform: translateY(-5px);
-      border-color: var(--accent-silver);
+      border-color: var(--accent);
     }
 
     .card h3 {
       font-size: 1.3rem;
       margin-bottom: 0.8rem;
-      color: #ffffff;
+      color: var(--text-white);
     }
 
     .card p, .card ul {
@@ -261,12 +292,12 @@
       font-family: monospace;
       padding: 0.3rem 0.8rem;
       border-radius: 20px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--accent-silver);
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px solid var(--card-border);
+      color: var(--accent);
     }
 
-    /* Table for Academics */
+    /* Academics Table */
     .ol-table {
       width: 100%;
       border-collapse: collapse;
@@ -281,8 +312,8 @@
     }
 
     .ol-table th {
-      color: var(--primary);
-      background: rgba(255, 255, 255, 0.03);
+      color: var(--accent);
+      background: rgba(0, 240, 255, 0.03);
     }
 
     .ol-table td { color: var(--text-muted); }
@@ -293,17 +324,16 @@
       border-radius: 6px;
       font-weight: bold;
       font-size: 0.85rem;
+      color: var(--accent);
+      border: 1px solid var(--card-border);
+      background: rgba(0, 240, 255, 0.08);
     }
 
-    .grade-a { background: rgba(76, 175, 80, 0.2); color: #81c784; border: 1px solid #4caf50; }
-    .grade-b { background: rgba(33, 150, 243, 0.2); color: #64b5f6; border: 1px solid #2196f3; }
-    .grade-c { background: rgba(158, 158, 158, 0.2); color: #e0e0e0; border: 1px solid #9e9e9e; }
-
-    /* Authentic Social Portals */
+    /* Social Links */
     .social-portals {
       display: flex;
       gap: 1rem;
-      margin-top: 1rem;
+      margin-top: 1.2rem;
       flex-wrap: wrap;
     }
 
@@ -311,32 +341,22 @@
       display: flex;
       align-items: center;
       gap: 0.7rem;
-      padding: 0.7rem 1.3rem;
+      padding: 0.7rem 1.4rem;
       border-radius: 30px;
-      color: #fff;
+      color: var(--bg-dark);
+      background: var(--accent);
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.95rem;
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: transform 0.3s;
     }
 
     .portal-link:hover { transform: translateY(-3px); }
 
-    .portal-insta {
-      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-      box-shadow: 0 0 15px rgba(220, 39, 67, 0.3);
-    }
-
-    .portal-tiktok {
-      background: #000000;
-      border: 1px solid #25f4ee;
-      box-shadow: -2px 2px 10px rgba(37, 244, 238, 0.4), 2px -2px 10px rgba(254, 44, 85, 0.4);
-    }
-
     .portal-link svg {
       width: 20px;
       height: 20px;
-      fill: #ffffff;
+      fill: var(--bg-dark);
     }
 
     /* Footer */
@@ -346,13 +366,13 @@
       color: var(--text-muted);
       font-size: 0.9rem;
       border-top: 1px solid var(--card-border);
-      background: rgba(5, 5, 8, 0.8);
+      background: rgba(10, 13, 20, 0.9);
     }
   </style>
 </head>
 <body>
 
-  <!-- Background Animated Glows -->
+  <!-- Background Glows -->
   <div class="glow-container">
     <div class="glow-ball one"></div>
     <div class="glow-ball two"></div>
@@ -371,16 +391,25 @@
     </div>
   </nav>
 
-  <!-- PAGE 1: MAIN / ABOUT ME -->
+  <!-- PAGE 1: MAIN / HERO (Layout like Reference Screenshot) -->
   <main id="home" class="page active">
-    <div class="hero">
+    <div class="hero-layout">
+      
+      <!-- Text Section -->
       <div class="hero-text">
-        <div class="hero-tag">// STRATEGIST • LEADER • INNOVATOR</div>
-        <h1>Hi, I'm <span>Sasantha Nichula Gunawardena</span></h1>
-        <p>A multi-disciplinary innovator blending algorithmic market analysis, AI software crafting, competitive chess strategy, martial arts, and high-level student governance.</p>
-        <button class="nav-btn active" style="padding: 0.8rem 1.6rem; font-size: 1rem;" onclick="showPage('tech')">Explore Tech & Experience →</button>
+        <h1>Hello, I'm Sasantha.<br><span>Multi-Discipline Strategist.</span></h1>
+        <p>Combining quantitative market analysis, artificial intelligence software crafting, competitive chess, martial arts, and provincial student governance.</p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="showPage('contact')">Get In Touch</button>
+          <button class="nav-btn" onclick="showPage('tech')">Explore Portfolio →</button>
+        </div>
       </div>
-      <img src="photo1.jpg" alt="Sasantha Nichula Gunawardena" class="main-avatar">
+
+      <!-- Image Section -->
+      <div class="hero-image-wrapper">
+        <img src="photo1.jpg" alt="Sasantha Nichula Gunawardena" class="portrait-img">
+      </div>
+
     </div>
   </main>
 
@@ -391,7 +420,7 @@
       <div class="card">
         <img src="photo5.jpg" alt="Trading Setup" class="card-img">
         <h3>Precision Quantitative Trader</h3>
-        <p>Expert in technical analysis, order block execution, and risk-managed perpetual contract trading (e.g., USDT pairs). Leverages structural market patterns and high-probability setups to capture macro and micro trends.</p>
+        <p>Expert in technical analysis, order block execution, and risk-managed perpetual contract trading (USDT pairs). Leverages structural market patterns and high-probability setups to capture trends.</p>
         <div class="tags">
           <span class="tag">Order Blocks</span>
           <span class="tag">Technical Analysis</span>
@@ -402,7 +431,7 @@
       <div class="card">
         <img src="photo6.jpg" alt="AI Development" class="card-img">
         <h3>AI Code Architect & Engineer</h3>
-        <p>Combining high-level critical thinking with advanced AI orchestration tools to rapidly design, construct, and deploy sophisticated software applications and Web architectures from scratch.</p>
+        <p>Combining high-level critical thinking with advanced AI orchestration tools to rapidly design, construct, and deploy software applications and Web architectures from scratch.</p>
         <div class="tags">
           <span class="tag">AI Orchestration</span>
           <span class="tag">Full-Stack Logic</span>
@@ -492,15 +521,15 @@
           <tr><th>Subject</th><th>Grade</th></tr>
         </thead>
         <tbody>
-          <tr><td>Drama & Theatre</td><td><span class="grade-badge grade-a">A</span></td></tr>
-          <tr><td>Buddhism</td><td><span class="grade-badge grade-b">B</span></td></tr>
-          <tr><td>English Language</td><td><span class="grade-badge grade-b">B</span></td></tr>
-          <tr><td>Mathematics</td><td><span class="grade-badge grade-c">C</span></td></tr>
-          <tr><td>History</td><td><span class="grade-badge grade-c">C</span></td></tr>
-          <tr><td>Science</td><td><span class="grade-badge grade-c">C</span></td></tr>
-          <tr><td>Sinhala Language & Literature</td><td><span class="grade-badge grade-c">C</span></td></tr>
-          <tr><td>Business & Accounting Studies</td><td><span class="grade-badge grade-c">C</span></td></tr>
-          <tr><td>Information & Communication Technology (ICT)</td><td><span class="grade-badge grade-c">C</span></td></tr>
+          <tr><td>Drama & Theatre</td><td><span class="grade-badge">A</span></td></tr>
+          <tr><td>Buddhism</td><td><span class="grade-badge">B</span></td></tr>
+          <tr><td>English Language</td><td><span class="grade-badge">B</span></td></tr>
+          <tr><td>Mathematics</td><td><span class="grade-badge">C</span></td></tr>
+          <tr><td>History</td><td><span class="grade-badge">C</span></td></tr>
+          <tr><td>Science</td><td><span class="grade-badge">C</span></td></tr>
+          <tr><td>Sinhala Language & Literature</td><td><span class="grade-badge">C</span></td></tr>
+          <tr><td>Business & Accounting Studies</td><td><span class="grade-badge">C</span></td></tr>
+          <tr><td>Information & Communication Technology (ICT)</td><td><span class="grade-badge">C</span></td></tr>
         </tbody>
       </table>
       <br>
@@ -515,13 +544,13 @@
       <p>📍 <strong>Address:</strong> (1**/* B******, B**********), Sri Lanka[cite: 1]</p>
       <p>✉️ <strong>Email:</strong> sasanthagunawardena@gmail.com[cite: 1]</p>
       <br>
-      <p><strong>Connect on Social Portals:</strong></p>
+      <p><strong>Social Portals:</strong></p>
       <div class="social-portals">
-        <a href="https://www.instagram.com/callme.sasantha?igsh=MXI0YzlqYTV4ZWE5bw==" target="_blank" class="portal-link portal-insta">
+        <a href="https://www.instagram.com/callme.sasantha?igsh=MXI0YzlqYTV4ZWE5bw==" target="_blank" class="portal-link">
           <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           callme.sasantha
         </a>
-        <a href="https://www.tiktok.com/@callme..sasa?_r=1&_t=ZS-98De9aSlyCq" target="_blank" class="portal-link portal-tiktok">
+        <a href="https://www.tiktok.com/@callme..sasa?_r=1&_t=ZS-98De9aSlyCq" target="_blank" class="portal-link">
           <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.56-1.31 1.53-1.29 2.51.01 1.1.75 2.1 1.77 2.45.96.34 2.07.13 2.85-.51.78-.62 1.21-1.6 1.18-2.6.01-4.57 0-9.15.01-13.72z"/></svg>
           @callme..sasa
         </a>
@@ -534,34 +563,20 @@
     <p>© Sasantha Nichula Gunawardena. All rights reserved.</p>
   </footer>
 
-  <!-- Page Switcher Script -->
+  <!-- Page Navigation Script -->
   <script>
     function showPage(pageId) {
-      // Hide all pages
-      document.querySelectorAll('.page').forEach(page => {
-        page.classList.remove('active');
-      });
+      document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
 
-      // Deactivate all buttons
-      document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-
-      // Show requested page
       const targetPage = document.getElementById(pageId);
-      if(targetPage) {
-        targetPage.classList.add('active');
-      }
+      if(targetPage) targetPage.classList.add('active');
 
-      // Highlight active button
       const activeBtn = Array.from(document.querySelectorAll('.nav-btn')).find(
         btn => btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(pageId)
       );
-      if(activeBtn) {
-        activeBtn.classList.add('active');
-      }
+      if(activeBtn) activeBtn.classList.add('active');
 
-      // Scroll to top of view smoothly
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
