@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>S.N. Gunawardena | Portfolio</title>
   <style>
-    /* Modern Whitish Light Theme */
+    /* Vibrant Modern Whitish Theme */
     * {
       margin: 0;
       padding: 0;
@@ -14,13 +14,14 @@
     }
 
     :root {
-      --bg-light: #f8fafc;
+      --bg-light: #f1f5f9;
       --card-bg: #ffffff;
-      --card-border: #e2e8f0;
+      --card-border: #cbd5e1;
       --text-dark: #0f172a;
-      --text-muted: #64748b;
-      --accent-primary: #2563eb;
-      --accent-hover: #1d4ed8;
+      --text-muted: #475569;
+      --accent-primary: #4f46e5; /* New Vibrant Indigo Accent */
+      --accent-secondary: #0284c7; /* Electric Cyan-Blue Accent */
+      --accent-hover: #4338ca;
     }
 
     body {
@@ -33,7 +34,7 @@
       justify-content: space-between;
     }
 
-    /* Ambient Soft Glows for Light Theme */
+    /* Ambient Vibrant Glows */
     .glow-container {
       position: fixed;
       top: 0;
@@ -47,9 +48,8 @@
     .glow-ball {
       position: absolute;
       border-radius: 50%;
-      filter: blur(140px);
-      opacity: 0.35;
-      background: #cbd5e1;
+      filter: blur(120px);
+      opacity: 0.25;
     }
 
     .glow-ball.one {
@@ -57,13 +57,15 @@
       height: 500px;
       top: -150px;
       right: -100px;
+      background: #818cf8;
     }
 
     .glow-ball.two {
-      width: 400px;
-      height: 400px;
+      width: 450px;
+      height: 450px;
       bottom: -150px;
       left: -100px;
+      background: #38bdf8;
     }
 
     /* Navigation */
@@ -72,19 +74,19 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.5rem 8%;
-      background: rgba(255, 255, 255, 0.9);
-      border-bottom: 1px solid var(--card-border);
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 2px solid var(--card-border);
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
     }
 
     .logo {
       font-size: 1.3rem;
       font-weight: 800;
-      letter-spacing: 1px;
-      color: var(--text-dark);
+      letter-spacing: 1.5px;
+      color: var(--accent-primary);
       text-transform: uppercase;
       cursor: pointer;
     }
@@ -100,17 +102,17 @@
       border: 1px solid transparent;
       color: var(--text-muted);
       font-size: 0.95rem;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 1.1rem;
       border-radius: 20px;
       transition: all 0.3s;
     }
 
     .nav-btn:hover, .nav-btn.active {
       color: var(--accent-primary);
-      border-color: var(--card-border);
-      background: #f1f5f9;
+      border-color: var(--accent-primary);
+      background: #e0e7ff;
     }
 
     /* Multi-Page Views */
@@ -160,7 +162,9 @@
     }
 
     .hero-text h1 span {
-      color: var(--accent-primary);
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .hero-text p {
@@ -178,7 +182,7 @@
     }
 
     .btn-primary {
-      background: var(--text-dark);
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
       color: #ffffff;
       font-weight: 700;
       padding: 0.9rem 2.2rem;
@@ -187,13 +191,12 @@
       font-size: 1rem;
       cursor: pointer;
       transition: all 0.3s;
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.15);
+      box-shadow: 0 4px 18px rgba(79, 70, 229, 0.3);
     }
 
     .btn-primary:hover {
-      background: var(--accent-primary);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.25);
+      box-shadow: 0 6px 24px rgba(79, 70, 229, 0.45);
     }
 
     .hero-image-wrapper {
@@ -209,8 +212,8 @@
       position: absolute;
       width: 90%;
       height: 90%;
-      background: #e2e8f0;
-      border: 1px solid var(--card-border);
+      background: #c7d2fe;
+      border: 2px solid var(--accent-primary);
       border-radius: 24px;
       z-index: 1;
       transform: rotate(-3deg);
@@ -224,8 +227,8 @@
       height: 560px;
       object-fit: cover;
       border-radius: 20px;
-      border: 1px solid var(--card-border);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      border: 2px solid var(--card-border);
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
     }
 
     /* General Grid & Cards */
@@ -248,10 +251,10 @@
 
     .card {
       background: var(--card-bg);
-      border: 1px solid var(--card-border);
+      border: 2px solid var(--card-border);
       border-radius: 20px;
       padding: 2.2rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
       transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
       display: flex;
       flex-direction: column;
@@ -259,8 +262,8 @@
 
     .card:hover {
       transform: translateY(-6px);
-      border-color: #cbd5e1;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+      border-color: var(--accent-primary);
+      box-shadow: 0 12px 30px rgba(79, 70, 229, 0.12);
     }
 
     .card h3 {
@@ -301,10 +304,10 @@
       font-family: monospace;
       padding: 0.4rem 0.9rem;
       border-radius: 20px;
-      background: #f1f5f9;
-      border: 1px solid var(--card-border);
-      color: var(--text-dark);
-      font-weight: 600;
+      background: #e0e7ff;
+      border: 1px solid #c7d2fe;
+      color: var(--accent-primary);
+      font-weight: 700;
     }
 
     /* Academics Table */
@@ -323,7 +326,7 @@
 
     .ol-table th {
       color: var(--text-dark);
-      background: #f1f5f9;
+      background: #e0e7ff;
     }
 
     .ol-table td { color: var(--text-muted); }
@@ -335,8 +338,8 @@
       font-weight: bold;
       font-size: 0.9rem;
       color: var(--accent-primary);
-      border: 1px solid #bfdbfe;
-      background: #eff6ff;
+      border: 1px solid #a5b4fc;
+      background: #e0e7ff;
     }
 
     /* Original Social Brand Logos Styling */
@@ -365,13 +368,13 @@
     /* Instagram Brand Gradient */
     .portal-insta {
       background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-      box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);
+      box-shadow: 0 4px 15px rgba(220, 39, 67, 0.35);
     }
 
     /* TikTok Original Styling */
     .portal-tiktok {
       background: #000000;
-      box-shadow: -2px 2px 10px rgba(37, 244, 238, 0.5), 2px -2px 10px rgba(254, 44, 85, 0.5);
+      box-shadow: -2px 2px 10px rgba(37, 244, 238, 0.6), 2px -2px 10px rgba(254, 44, 85, 0.6);
     }
 
     .portal-link svg {
@@ -386,7 +389,7 @@
       padding: 2rem;
       color: var(--text-muted);
       font-size: 0.9rem;
-      border-top: 1px solid var(--card-border);
+      border-top: 2px solid var(--card-border);
       background: #ffffff;
     }
   </style>
@@ -470,19 +473,19 @@
         <img src="photo4.jpg" alt="Parliament Certificates" class="card-img">
         <h3>Student Parliament</h3>
         <ul>
-          <li><strong>Deputy Speaker</strong> (2025) – Provincial Parliament Member[cite: 1]</li>
-          <li><strong>Minister</strong> of Student Skills & Innovations (2024)[cite: 1]</li>
-          <li><strong>Deputy Minister</strong> of Student Skills & Innovations (2023)[cite: 1]</li>
-          <li><strong>Speaker</strong> of School Student Parliament (150 votes) & Zonal Representative (2023)[cite: 1]</li>
+          <li><strong>Deputy Speaker</strong> (2025) – Provincial Parliament Member</li>
+          <li><strong>Minister</strong> of Student Skills & Innovations (2024)</li>
+          <li><strong>Deputy Minister</strong> of Student Skills & Innovations (2023)</li>
+          <li><strong>Speaker</strong> of School Student Parliament (150 votes) & Zonal Representative (2023)</li>
         </ul>
       </div>
 
       <div class="card">
         <h3>School Leadership & Units</h3>
         <ul>
-          <li><strong>Senior Prefect</strong> (Serving since 2022)[cite: 1]</li>
-          <li>Member of the <strong>School Traffic Warden Unit</strong>[cite: 1]</li>
-          <li><strong>ICT Excel Zonal Competition</strong> – Ranked Top 10[cite: 1]</li>
+          <li><strong>Senior Prefect</strong> (Serving since 2022)</li>
+          <li>Member of the <strong>School Traffic Warden Unit</strong></li>
+          <li><strong>ICT Excel Zonal Competition</strong> – Ranked Top 10</li>
         </ul>
         <div class="tags">
           <span class="tag">Leadership</span>
@@ -500,29 +503,29 @@
       <div class="card">
         <img src="photo2.jpg" alt="Karate Performance" class="card-img">
         <h3>Karate (Shito-Ryu)</h3>
-        <p><strong>Rank:</strong> Brown Belt (2nd Kyu)[cite: 1]</p>
+        <p><strong>Rank:</strong> Brown Belt (2nd Kyu)</p>
         <br>
         <p><strong>Key Achievements:</strong></p>
         <ul>
-          <li>1st Place – SKSO Open Kata Championship[cite: 1]</li>
-          <li>1st & 3rd Place – Shukokai Kata & Kumite Championship[cite: 1]</li>
-          <li>1st & 1st Place – Eagle Shotokan Championship[cite: 1]</li>
-          <li>1st & 3rd Place – Kyukai Championship[cite: 1]</li>
-          <li>3rd Place – Gman Shotokan Kata Championship[cite: 1]</li>
+          <li>1st Place – SKSO Open Kata Championship</li>
+          <li>1st & 3rd Place – Shukokai Kata & Kumite Championship</li>
+          <li>1st & 1st Place – Eagle Shotokan Championship</li>
+          <li>1st & 3rd Place – Kyukai Championship</li>
+          <li>3rd Place – Gman Shotokan Kata Championship</li>
         </ul>
       </div>
 
       <div class="card">
         <img src="photo3.jpg" alt="Chess Match" class="card-img">
         <h3>FIDE Rated Chess Player</h3>
-        <p><strong>FIDE ID:</strong> 80840540[cite: 1]</p>
-        <p><strong>Current Rating:</strong> 1400[cite: 1]</p>
+        <p><strong>FIDE ID:</strong> 80840540</p>
+        <p><strong>Current Rating:</strong> 1400</p>
         <br>
         <p><strong>Competitive Participations:</strong></p>
         <ul>
-          <li>Sri Lankan National Youth Chess Championship (2023)[cite: 1]</li>
-          <li>Novices Division Championship (2024)[cite: 1]</li>
-          <li>Queen’s Chess Championship (2024)[cite: 1]</li>
+          <li>Sri Lankan National Youth Chess Championship (2023)</li>
+          <li>Novices Division Championship (2024)</li>
+          <li>Queen’s Chess Championship (2024)</li>
         </ul>
         <div class="tags">
           <span class="tag">FIDE 1400</span>
@@ -554,7 +557,7 @@
         </tbody>
       </table>
       <br>
-      <p><strong>Education History:</strong> Ramukkana Vidyaloka K.V | Sussex College | JMC College[cite: 1]</p>
+      <p><strong>Education History:</strong> Ramukkana Vidyaloka K.V | Sussex College | JMC College</p>
     </div>
   </section>
 
@@ -562,18 +565,18 @@
   <section id="contact" class="page">
     <h2 class="section-title">Get in Touch</h2>
     <div class="card contact-info" style="width: 100%;">
-      <p>📍 <strong>Address:</strong> (1**/* B******, B**********), Sri Lanka[cite: 1]</p>
-      <p>✉️ <strong>Email:</strong> sasanthagunawardena@gmail.com[cite: 1]</p>
+      <p>📍 <strong>Address:</strong> (1**/* B******, B**********), Sri Lanka</p>
+      <p>✉️ <strong>Email:</strong> sasanthagunawardena@gmail.com</p>
       <br>
       <p><strong>Social Portals:</strong></p>
       <div class="social-portals">
         <a href="https://www.instagram.com/callme.sasantha?igsh=MXI0YzlqYTV4ZWE5bw==" target="_blank" class="portal-link portal-insta">
           <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          callme.sasantha[cite: 1]
+          callme.sasantha
         </a>
         <a href="https://www.tiktok.com/@callme..sasa?_r=1&_t=ZS-98De9aSlyCq" target="_blank" class="portal-link portal-tiktok">
           <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.56-1.31 1.53-1.29 2.51.01 1.1.75 2.1 1.77 2.45.96.34 2.07.13 2.85-.51.78-.62 1.21-1.6 1.18-2.6.01-4.57 0-9.15.01-13.72z"/></svg>
-          @callme..sasa[cite: 1]
+          @callme..sasa
         </a>
       </div>
     </div>
