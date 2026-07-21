@@ -182,26 +182,38 @@
     .hero-text h1 {
       font-size: clamp(2rem, 5vw, 3.8rem);
       font-weight: 800;
-      line-height: 1.15;
+      line-height: 1.25;
       margin-bottom: 1.2rem;
       color: var(--text-dark);
     }
 
     /* TYPING ANIMATION STYLES */
+    .typing-container {
+      display: block;
+      margin-top: 0.4rem;
+    }
+
     .typing-text {
-      display: block; /* Pushes onto its own line downwards */
       background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      border-right: 3px solid var(--accent-primary);
-      padding-right: 4px;
-      animation: blinkCursor 0.75s step-end infinite;
-      word-break: break-word;
+      white-space: pre-wrap; /* Keeps spaces intact during typing */
+      word-wrap: break-word;
     }
 
-    @keyframes blinkCursor {
-      from, to { border-color: transparent; }
-      50% { border-color: var(--accent-primary); }
+    .typing-cursor {
+      display: inline-block;
+      width: 3px;
+      height: 1em;
+      background-color: var(--accent-primary);
+      margin-left: 2px;
+      vertical-align: middle;
+      animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
     }
 
     .hero-text p {
@@ -621,7 +633,12 @@
   <main id="home" class="page active">
     <div class="hero-layout">
       <div class="hero-text">
-        <h1>Hello, I'm Sasantha.<span id="typingTarget" class="typing-text"></span></h1>
+        <h1>
+          Hello, I'm Sasantha.
+          <span class="typing-container">
+            <span id="typingTarget" class="typing-text"></span><span class="typing-cursor"></span>
+          </span>
+        </h1>
         <p>Combining quantitative market analysis, artificial intelligence software crafting, competitive chess, martial arts, and provincial student governance.</p>
         <div class="hero-actions">
           <button class="btn-primary" onclick="showPage('contact')">Get In Touch</button>
@@ -875,7 +892,7 @@
       if(pageId === 'home') startTypingAnimation();
     }
 
-    /* 1. TYPING ANIMATION FOR HERO HEADLINE */
+    /* 1. TYPING ANIMATION WITH MOVING CURSOR AND WORD BREAKS */
     const textToType = "Journey of finding my inner potential.";
     let typeIndex = 0;
     let typingTimer = null;
@@ -883,14 +900,14 @@
     function startTypingAnimation() {
       const target = document.getElementById('typingTarget');
       if (!target) return;
-      
-      target.innerText = "";
+
+      target.textContent = "";
       typeIndex = 0;
       if (typingTimer) clearInterval(typingTimer);
 
       typingTimer = setInterval(() => {
         if (typeIndex < textToType.length) {
-          target.innerText += textToType.charAt(typeIndex);
+          target.textContent += textToType.charAt(typeIndex);
           typeIndex++;
         } else {
           clearInterval(typingTimer);
