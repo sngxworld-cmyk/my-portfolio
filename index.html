@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>S.N. Gunawardena | Portfolio</title>
   
-  <!-- 1. Custom SVG Favicon -->
+  <!-- Custom SVG Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234f46e5'/><text x='50%' y='65%' font-size='60' font-weight='900' fill='white' text-anchor='middle' font-family='sans-serif'>S</text></svg>">
 
   <style>
@@ -187,10 +187,19 @@
       color: var(--text-dark);
     }
 
-    .hero-text h1 span {
+    /* TYPING ANIMATION STYLES */
+    .typing-text {
       background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      border-right: 3px solid var(--accent-primary);
+      padding-right: 4px;
+      animation: blinkCursor 0.75s step-end infinite;
+    }
+
+    @keyframes blinkCursor {
+      from, to { border-color: transparent; }
+      50% { border-color: var(--accent-primary); }
     }
 
     .hero-text p {
@@ -256,6 +265,12 @@
       border-radius: 20px;
       border: 2px solid var(--card-border);
       box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .portrait-img:hover {
+      transform: scale(1.02);
     }
 
     /* General Grid & Cards */
@@ -313,6 +328,13 @@
       border-radius: 14px;
       margin-bottom: 1.2rem;
       border: 1px solid var(--card-border);
+      cursor: pointer;
+      transition: transform 0.3s, filter 0.3s;
+    }
+
+    .card-img:hover {
+      transform: scale(1.02);
+      filter: brightness(1.05);
     }
 
     .tags {
@@ -333,7 +355,7 @@
       font-weight: 700;
     }
 
-    /* 2. ANIMATED PROGRESS BARS */
+    /* ANIMATED PROGRESS BARS */
     .skills-wrapper {
       margin-top: 1.2rem;
       display: flex;
@@ -367,51 +389,100 @@
       transition: width 1.2s cubic-bezier(0.1, 0.42, 0.85, 1);
     }
 
-    /* 3. INTERACTIVE CHESS WIDGET */
-    .chess-container {
-      margin-top: 1.2rem;
+    /* DIRECT CONTACT FORM STYLES */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      width: 100%;
+    }
+
+    @media (max-width: 850px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    .contact-form {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      background: #f8fafc;
-      padding: 1rem;
-      border-radius: 14px;
-      border: 1px solid var(--card-border);
+      gap: 1.2rem;
     }
 
-    .chessboard {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(4, 1fr);
-      width: 100%;
-      max-width: 260px;
-      height: 260px;
-      border: 3px solid #334155;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .sq {
+    .form-group {
       display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 2px solid var(--card-border);
+      border-radius: 12px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.3s;
+      background: #f8fafc;
+    }
+
+    .form-control:focus {
+      border-color: var(--accent-primary);
+      background: #ffffff;
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* LIGHTBOX POPUP MODAL STYLES */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.88);
+      z-index: 1000;
       justify-content: center;
       align-items: center;
-      font-size: 2rem;
-      cursor: pointer;
-      user-select: none;
-      transition: background 0.2s;
+      padding: 2rem;
+      backdrop-filter: blur(8px);
+      animation: fadeIn 0.3s ease-in-out;
     }
 
-    .sq.light { background: #f0d9b5; }
-    .sq.dark { background: #b58863; }
-    .sq.selected { background: #7fc97f !important; }
+    .lightbox-modal.active {
+      display: flex;
+    }
 
-    .chess-status {
-      margin-top: 0.8rem;
-      font-size: 0.85rem;
-      font-weight: 700;
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 85vh;
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      border: 2px solid #ffffff;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      color: #ffffff;
+      font-size: 2.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .lightbox-close:hover {
       color: var(--accent-primary);
-      text-align: center;
     }
 
     /* Responsive Table Container */
@@ -548,7 +619,7 @@
   <main id="home" class="page active">
     <div class="hero-layout">
       <div class="hero-text">
-        <h1>Hello, I'm Sasantha.<br><span>Journey of finding my inner potential.</span></h1>
+        <h1>Hello, I'm Sasantha.<br><span id="typingTarget" class="typing-text"></span></h1>
         <p>Combining quantitative market analysis, artificial intelligence software crafting, competitive chess, martial arts, and provincial student governance.</p>
         <div class="hero-actions">
           <button class="btn-primary" onclick="showPage('contact')">Get In Touch</button>
@@ -556,7 +627,7 @@
         </div>
       </div>
       <div class="hero-image-wrapper">
-        <img src="photo1.jpg" alt="Sasantha Nichula Gunawardena" class="portrait-img">
+        <img src="photo1.jpg" alt="Sasantha Nichula Gunawardena" class="portrait-img" onclick="openLightbox(this.src)">
       </div>
     </div>
   </main>
@@ -566,7 +637,7 @@
     <h2 class="section-title">Cryptocurrency Trading & AI Systems</h2>
     <div class="grid">
       <div class="card">
-        <img src="photo5.jpg" alt="Trading Setup" class="card-img">
+        <img src="photo5.jpg" alt="Trading Setup" class="card-img" onclick="openLightbox(this.src)">
         <h3>Precision Quantitative Trader</h3>
         <p>Expert in technical analysis, order block execution, and risk-managed perpetual contract trading (USDT pairs).</p>
         
@@ -590,7 +661,7 @@
       </div>
 
       <div class="card">
-        <img src="photo6.jpg" alt="AI Development" class="card-img">
+        <img src="photo6.jpg" alt="AI Development" class="card-img" onclick="openLightbox(this.src)">
         <h3>AI Code Architect & Engineer</h3>
         <p>Combining high-level critical thinking with advanced AI orchestration tools to rapidly design and deploy full-stack applications.</p>
         
@@ -620,7 +691,7 @@
     <h2 class="section-title">Leadership & Governance</h2>
     <div class="grid">
       <div class="card">
-        <img src="photo4.jpg" alt="Parliament Certificates" class="card-img">
+        <img src="photo4.jpg" alt="Parliament Certificates" class="card-img" onclick="openLightbox(this.src)">
         <h3>Student Parliament</h3>
         <ul>
           <li><strong>Deputy Speaker</strong> (2025) – Provincial Parliament Member</li>
@@ -651,7 +722,7 @@
     <h2 class="section-title">Sports & Tactical Disciplines</h2>
     <div class="grid">
       <div class="card">
-        <img src="photo2.jpg" alt="Karate Performance" class="card-img">
+        <img src="photo2.jpg" alt="Karate Performance" class="card-img" onclick="openLightbox(this.src)">
         <h3>Karate (Shito-Ryu)</h3>
         <p><strong>Rank:</strong> Brown Belt (2nd Kyu)</p>
         <br>
@@ -666,31 +737,23 @@
       </div>
 
       <div class="card">
-        <img src="photo3.jpg" alt="Chess Match" class="card-img">
+        <img src="photo3.jpg" alt="Chess Match" class="card-img" onclick="openLightbox(this.src)">
         <h3>FIDE Rated Chess Player</h3>
         <p><strong>FIDE ID:</strong> 80840540 | <strong>Rating:</strong> 1400</p>
-        
-        <!-- Interactive 4x4 Chess Tactical Puzzle Widget -->
-        <div class="chess-container">
-          <div class="chessboard" id="board">
-            <div class="sq light" onclick="chessClick(0)"></div>
-            <div class="sq dark" onclick="chessClick(1)"></div>
-            <div class="sq light" onclick="chessClick(2)"></div>
-            <div class="sq dark" onclick="chessClick(3)"></div>
-            <div class="sq dark" onclick="chessClick(4)"></div>
-            <div class="sq light" onclick="chessClick(5)"></div>
-            <div class="sq dark" onclick="chessClick(6)"></div>
-            <div class="sq light" onclick="chessClick(7)"></div>
-            <div class="sq light" onclick="chessClick(8)"></div>
-            <div class="sq dark" onclick="chessClick(9)"></div>
-            <div class="sq light" onclick="chessClick(10)"></div>
-            <div class="sq dark" onclick="chessClick(11)"></div>
-            <div class="sq dark" onclick="chessClick(12)"></div>
-            <div class="sq light" onclick="chessClick(13)"></div>
-            <div class="sq dark" onclick="chessClick(14)"></div>
-            <div class="sq light" onclick="chessClick(15)"></div>
+        <br>
+        <p><strong>Competitive Participations:</strong></p>
+        <ul>
+          <li>Sri Lankan National Youth Chess Championship (2023)</li>
+          <li>Novices Division Championship (2024)</li>
+          <li>Queen’s Chess Championship (2024)</li>
+        </ul>
+
+        <!-- Tactical Progress Bar -->
+        <div class="skills-wrapper" style="margin-top: 1rem;">
+          <div>
+            <div class="skill-info"><span>Chess Strategy & Calculation</span><span>85%</span></div>
+            <div class="progress-bar-bg"><div class="progress-fill" data-width="85%"></div></div>
           </div>
-          <div class="chess-status" id="chessStatus">White to move: Tap White Queen (♕) to deliver Checkmate!</div>
         </div>
 
         <div class="tags" style="margin-top: 1rem;">
@@ -732,23 +795,56 @@
   <!-- PAGE 6: CONTACT -->
   <section id="contact" class="page">
     <h2 class="section-title">Get in Touch</h2>
-    <div class="card contact-info" style="width: 100%;">
-      <p>📍 <strong>Address:</strong> (1**/* B******, B**********), Sri Lanka</p>
-      <p>✉️ <strong>Email:</strong> sasanthagunawardena@gmail.com</p>
-      <br>
-      <p><strong>Social Portals:</strong></p>
-      <div class="social-portals">
-        <a href="https://www.instagram.com/callme.sasantha?igsh=MXI0YzlqYTV4ZWE5bw==" target="_blank" class="portal-link portal-insta">
-          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          callme.sasantha
-        </a>
-        <a href="https://www.tiktok.com/@callme..sasa?_r=1&_t=ZS-98De9aSlyCq" target="_blank" class="portal-link portal-tiktok">
-          <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.56-1.31 1.53-1.29 2.51.01 1.1.75 2.1 1.77 2.45.96.34 2.07.13 2.85-.51.78-.62 1.21-1.6 1.18-2.6.01-4.57 0-9.15.01-13.72z"/></svg>
-          @callme..sasa
-        </a>
+    <div class="contact-grid">
+      
+      <!-- Contact Info Card -->
+      <div class="card contact-info">
+        <h3>Contact Information</h3>
+        <br>
+        <p>📍 <strong>Address:</strong> (1**/* B******, B**********), Sri Lanka</p>
+        <p style="margin-top: 0.8rem;">✉️ <strong>Email:</strong> sasanthagunawardena@gmail.com</p>
+        <br>
+        <p><strong>Social Portals:</strong></p>
+        <div class="social-portals">
+          <a href="https://www.instagram.com/callme.sasantha?igsh=MXI0YzlqYTV4ZWE5bw==" target="_blank" class="portal-link portal-insta">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            callme.sasantha
+          </a>
+          <a href="https://www.tiktok.com/@callme..sasa?_r=1&_t=ZS-98De9aSlyCq" target="_blank" class="portal-link portal-tiktok">
+            <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.56-1.31 1.53-1.29 2.51.01 1.1.75 2.1 1.77 2.45.96.34 2.07.13 2.85-.51.78-.62 1.21-1.6 1.18-2.6.01-4.57 0-9.15.01-13.72z"/></svg>
+            @callme..sasa
+          </a>
+        </div>
       </div>
+
+      <!-- Functional Direct Contact Form -->
+      <div class="card">
+        <h3>Send a Direct Message</h3>
+        <form class="contact-form" action="https://formspree.io/f/sasanthagunawardena@gmail.com" method="POST">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" class="form-control" placeholder="Type your message here..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="align-self: flex-start; margin-top: 0.5rem;">Send Message</button>
+        </form>
+      </div>
+
     </div>
   </section>
+
+  <!-- LIGHTBOX POPUP MODAL -->
+  <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightboxImg" class="lightbox-content" src="" alt="Popup View">
+  </div>
 
   <!-- Footer -->
   <footer>
@@ -772,11 +868,35 @@
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      // Trigger animated progress bars when page opens
+      // Trigger Animations
       triggerProgressBars();
+      if(pageId === 'home') startTypingAnimation();
     }
 
-    /* Animated Progress Bar Trigger */
+    /* 1. TYPING ANIMATION FOR HERO HEADLINE */
+    const textToType = "Journey of finding my inner potential.";
+    let typeIndex = 0;
+    let typingTimer = null;
+
+    function startTypingAnimation() {
+      const target = document.getElementById('typingTarget');
+      if (!target) return;
+      
+      target.innerText = "";
+      typeIndex = 0;
+      if (typingTimer) clearInterval(typingTimer);
+
+      typingTimer = setInterval(() => {
+        if (typeIndex < textToType.length) {
+          target.innerText += textToType.charAt(typeIndex);
+          typeIndex++;
+        } else {
+          clearInterval(typingTimer);
+        }
+      }, 65);
+    }
+
+    /* 2. ANIMATED PROGRESS BARS */
     function triggerProgressBars() {
       const activePage = document.querySelector('.page.active');
       if (activePage) {
@@ -790,56 +910,23 @@
       }
     }
 
-    /* Interactive Chess Logic */
-    let chessBoardState = [
-      '', '♚', '', '',
-      '', '', '', '',
-      '♕', '', '', '',
-      '', '', '', ''
-    ];
-    let selectedSquare = null;
-    let mateDelivered = false;
-
-    function renderChess() {
-      const squares = document.querySelectorAll('#board .sq');
-      squares.forEach((sq, idx) => {
-        sq.innerText = chessBoardState[idx];
-        sq.classList.remove('selected');
-        if (selectedSquare === idx) sq.classList.add('selected');
-      });
+    /* 3. LIGHTBOX POPUP MODAL LOGIC */
+    function openLightbox(src) {
+      const modal = document.getElementById('lightboxModal');
+      const img = document.getElementById('lightboxImg');
+      img.src = src;
+      modal.classList.add('active');
     }
 
-    function chessClick(idx) {
-      if (mateDelivered) return;
-
-      const status = document.getElementById('chessStatus');
-
-      if (selectedSquare === null) {
-        if (chessBoardState[idx] === '♕') {
-          selectedSquare = idx;
-          status.innerText = "Queen selected! Click square 2 (top row, 3rd tile) to deliver Checkmate!";
-        } else {
-          status.innerText = "Tap the White Queen (♕) to select it.";
-        }
-      } else {
-        if (idx === 2) { // Target checkmate square
-          chessBoardState[selectedSquare] = '';
-          chessBoardState[2] = '♕';
-          selectedSquare = null;
-          mateDelivered = true;
-          status.innerText = "🎯 CHECKMATE! Queen delivers mate on c4!";
-        } else {
-          selectedSquare = null;
-          status.innerText = "Incorrect move! Select the Queen again and place her next to the King.";
-        }
-      }
-      renderChess();
+    function closeLightbox() {
+      const modal = document.getElementById('lightboxModal');
+      modal.classList.remove('active');
     }
 
-    // Initialize initial view
+    // Initialize initial view on page load
     window.addEventListener('DOMContentLoaded', () => {
-      renderChess();
       triggerProgressBars();
+      startTypingAnimation();
     });
   </script>
 
