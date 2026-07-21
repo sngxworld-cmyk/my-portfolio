@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>S.N. Gunawardena | Portfolio</title>
+  
+  <!-- 1. Custom SVG Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234f46e5'/><text x='50%' y='65%' font-size='60' font-weight='900' fill='white' text-anchor='middle' font-family='sans-serif'>S</text></svg>">
+
   <style>
     /* Vibrant Modern Whitish Theme */
     * {
@@ -117,7 +121,7 @@
       background: #e0e7ff;
     }
 
-    /* Mobile Responsive Navigation (Scrollable Horizontal Menu) */
+    /* Mobile Responsive Navigation */
     @media (max-width: 850px) {
       nav {
         flex-direction: column;
@@ -131,11 +135,11 @@
         overflow-x: auto;
         padding-bottom: 0.3rem;
         -webkit-overflow-scrolling: touch;
-        scrollbar-width: none; /* Hide scrollbar Firefox */
+        scrollbar-width: none;
       }
 
       .nav-links::-webkit-scrollbar {
-        display: none; /* Hide scrollbar Chrome/Safari */
+        display: none;
       }
 
       .nav-btn {
@@ -329,6 +333,87 @@
       font-weight: 700;
     }
 
+    /* 2. ANIMATED PROGRESS BARS */
+    .skills-wrapper {
+      margin-top: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .skill-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 10px;
+      background: #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+      transition: width 1.2s cubic-bezier(0.1, 0.42, 0.85, 1);
+    }
+
+    /* 3. INTERACTIVE CHESS WIDGET */
+    .chess-container {
+      margin-top: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #f8fafc;
+      padding: 1rem;
+      border-radius: 14px;
+      border: 1px solid var(--card-border);
+    }
+
+    .chessboard {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      width: 100%;
+      max-width: 260px;
+      height: 260px;
+      border: 3px solid #334155;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .sq {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+    }
+
+    .sq.light { background: #f0d9b5; }
+    .sq.dark { background: #b58863; }
+    .sq.selected { background: #7fc97f !important; }
+
+    .chess-status {
+      margin-top: 0.8rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      text-align: center;
+    }
+
     /* Responsive Table Container */
     .table-container {
       width: 100%;
@@ -367,7 +452,7 @@
       background: #e0e7ff;
     }
 
-    /* Original Social Brand Logos Styling */
+    /* Social Brand Logos */
     .social-portals {
       display: flex;
       gap: 1rem;
@@ -462,8 +547,6 @@
   <!-- PAGE 1: MAIN / HERO -->
   <main id="home" class="page active">
     <div class="hero-layout">
-      
-      <!-- Text Section -->
       <div class="hero-text">
         <h1>Hello, I'm Sasantha.<br><span>Journey of finding my inner potential.</span></h1>
         <p>Combining quantitative market analysis, artificial intelligence software crafting, competitive chess, martial arts, and provincial student governance.</p>
@@ -472,12 +555,9 @@
           <button class="nav-btn" onclick="showPage('tech')">Explore Portfolio →</button>
         </div>
       </div>
-
-      <!-- Image Section -->
       <div class="hero-image-wrapper">
         <img src="photo1.jpg" alt="Sasantha Nichula Gunawardena" class="portrait-img">
       </div>
-
     </div>
   </main>
 
@@ -488,7 +568,20 @@
       <div class="card">
         <img src="photo5.jpg" alt="Trading Setup" class="card-img">
         <h3>Precision Quantitative Trader</h3>
-        <p>Expert in technical analysis, order block execution, and risk-managed perpetual contract trading (USDT pairs). Leverages structural market patterns and high-probability setups to capture trends.</p>
+        <p>Expert in technical analysis, order block execution, and risk-managed perpetual contract trading (USDT pairs).</p>
+        
+        <!-- Progress Bars -->
+        <div class="skills-wrapper">
+          <div>
+            <div class="skill-info"><span>Order Block Strategy</span><span>92%</span></div>
+            <div class="progress-bar-bg"><div class="progress-fill" data-width="92%"></div></div>
+          </div>
+          <div>
+            <div class="skill-info"><span>Risk & Capital Management</span><span>95%</span></div>
+            <div class="progress-bar-bg"><div class="progress-fill" data-width="95%"></div></div>
+          </div>
+        </div>
+
         <div class="tags">
           <span class="tag">Order Blocks</span>
           <span class="tag">Technical Analysis</span>
@@ -499,7 +592,20 @@
       <div class="card">
         <img src="photo6.jpg" alt="AI Development" class="card-img">
         <h3>AI Code Architect & Engineer</h3>
-        <p>Combining high-level critical thinking with advanced AI orchestration tools to rapidly design, construct, and deploy software applications and Web architectures from scratch.</p>
+        <p>Combining high-level critical thinking with advanced AI orchestration tools to rapidly design and deploy full-stack applications.</p>
+        
+        <!-- Progress Bars -->
+        <div class="skills-wrapper">
+          <div>
+            <div class="skill-info"><span>AI Agent Orchestration</span><span>90%</span></div>
+            <div class="progress-bar-bg"><div class="progress-fill" data-width="90%"></div></div>
+          </div>
+          <div>
+            <div class="skill-info"><span>Frontend & Web Architecture</span><span>88%</span></div>
+            <div class="progress-bar-bg"><div class="progress-fill" data-width="88%"></div></div>
+          </div>
+        </div>
+
         <div class="tags">
           <span class="tag">AI Orchestration</span>
           <span class="tag">Full-Stack Logic</span>
@@ -562,16 +668,32 @@
       <div class="card">
         <img src="photo3.jpg" alt="Chess Match" class="card-img">
         <h3>FIDE Rated Chess Player</h3>
-        <p><strong>FIDE ID:</strong> 80840540</p>
-        <p><strong>Current Rating:</strong> 1400</p>
-        <br>
-        <p><strong>Competitive Participations:</strong></p>
-        <ul>
-          <li>Sri Lankan National Youth Chess Championship (2023)</li>
-          <li>Novices Division Championship (2024)</li>
-          <li>Queen’s Chess Championship (2024)</li>
-        </ul>
-        <div class="tags">
+        <p><strong>FIDE ID:</strong> 80840540 | <strong>Rating:</strong> 1400</p>
+        
+        <!-- Interactive 4x4 Chess Tactical Puzzle Widget -->
+        <div class="chess-container">
+          <div class="chessboard" id="board">
+            <div class="sq light" onclick="chessClick(0)"></div>
+            <div class="sq dark" onclick="chessClick(1)"></div>
+            <div class="sq light" onclick="chessClick(2)"></div>
+            <div class="sq dark" onclick="chessClick(3)"></div>
+            <div class="sq dark" onclick="chessClick(4)"></div>
+            <div class="sq light" onclick="chessClick(5)"></div>
+            <div class="sq dark" onclick="chessClick(6)"></div>
+            <div class="sq light" onclick="chessClick(7)"></div>
+            <div class="sq light" onclick="chessClick(8)"></div>
+            <div class="sq dark" onclick="chessClick(9)"></div>
+            <div class="sq light" onclick="chessClick(10)"></div>
+            <div class="sq dark" onclick="chessClick(11)"></div>
+            <div class="sq dark" onclick="chessClick(12)"></div>
+            <div class="sq light" onclick="chessClick(13)"></div>
+            <div class="sq dark" onclick="chessClick(14)"></div>
+            <div class="sq light" onclick="chessClick(15)"></div>
+          </div>
+          <div class="chess-status" id="chessStatus">White to move: Tap White Queen (♕) to deliver Checkmate!</div>
+        </div>
+
+        <div class="tags" style="margin-top: 1rem;">
           <span class="tag">FIDE 1400</span>
           <span class="tag">Tactical Strategy</span>
         </div>
@@ -633,8 +755,9 @@
     <p>© Sasantha Nichula Gunawardena. All rights reserved.</p>
   </footer>
 
-  <!-- Page Navigation Script -->
+  <!-- Scripts -->
   <script>
+    /* Navigation Functionality */
     function showPage(pageId) {
       document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
       document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
@@ -648,7 +771,76 @@
       if(activeBtn) activeBtn.classList.add('active');
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Trigger animated progress bars when page opens
+      triggerProgressBars();
     }
+
+    /* Animated Progress Bar Trigger */
+    function triggerProgressBars() {
+      const activePage = document.querySelector('.page.active');
+      if (activePage) {
+        const fills = activePage.querySelectorAll('.progress-fill');
+        fills.forEach(fill => {
+          fill.style.width = '0%';
+          setTimeout(() => {
+            fill.style.width = fill.getAttribute('data-width');
+          }, 150);
+        });
+      }
+    }
+
+    /* Interactive Chess Logic */
+    let chessBoardState = [
+      '', '♚', '', '',
+      '', '', '', '',
+      '♕', '', '', '',
+      '', '', '', ''
+    ];
+    let selectedSquare = null;
+    let mateDelivered = false;
+
+    function renderChess() {
+      const squares = document.querySelectorAll('#board .sq');
+      squares.forEach((sq, idx) => {
+        sq.innerText = chessBoardState[idx];
+        sq.classList.remove('selected');
+        if (selectedSquare === idx) sq.classList.add('selected');
+      });
+    }
+
+    function chessClick(idx) {
+      if (mateDelivered) return;
+
+      const status = document.getElementById('chessStatus');
+
+      if (selectedSquare === null) {
+        if (chessBoardState[idx] === '♕') {
+          selectedSquare = idx;
+          status.innerText = "Queen selected! Click square 2 (top row, 3rd tile) to deliver Checkmate!";
+        } else {
+          status.innerText = "Tap the White Queen (♕) to select it.";
+        }
+      } else {
+        if (idx === 2) { // Target checkmate square
+          chessBoardState[selectedSquare] = '';
+          chessBoardState[2] = '♕';
+          selectedSquare = null;
+          mateDelivered = true;
+          status.innerText = "🎯 CHECKMATE! Queen delivers mate on c4!";
+        } else {
+          selectedSquare = null;
+          status.innerText = "Incorrect move! Select the Queen again and place her next to the King.";
+        }
+      }
+      renderChess();
+    }
+
+    // Initialize initial view
+    window.addEventListener('DOMContentLoaded', () => {
+      renderChess();
+      triggerProgressBars();
+    });
   </script>
 
 </body>
