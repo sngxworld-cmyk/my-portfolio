@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>S.N. Gunawardena | Portfolio</title>
   <style>
-    /* Reset & CSS Variables (Dark Stealth Theme) */
+    /* Reset & Dark Stealth Theme */
     * {
       margin: 0;
       padding: 0;
@@ -18,7 +18,6 @@
       --card-bg: rgba(18, 18, 24, 0.7);
       --card-border: rgba(255, 255, 255, 0.1);
       --primary: #e0e6ed;
-      --accent-glow: #3a3f58;
       --text: #ffffff;
       --text-muted: #9aa0a6;
       --accent-silver: #8a94a6;
@@ -29,6 +28,9 @@
       color: var(--text);
       overflow-x: hidden;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     /* Animated Glowing Obsidian Background */
@@ -77,9 +79,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.5rem 8%;
+      padding: 1.2rem 8%;
       backdrop-filter: blur(16px);
-      background: rgba(5, 5, 8, 0.8);
+      background: rgba(5, 5, 8, 0.85);
       border-bottom: 1px solid var(--card-border);
       position: sticky;
       top: 0;
@@ -87,36 +89,67 @@
     }
 
     .logo {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       font-weight: 800;
       letter-spacing: 2px;
       color: var(--primary);
       text-transform: uppercase;
+      cursor: pointer;
     }
 
-    .nav-links a {
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      background: none;
+      border: none;
       color: var(--text-muted);
-      text-decoration: none;
-      margin-left: 1.5rem;
-      transition: color 0.3s;
       font-size: 0.95rem;
+      cursor: pointer;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      transition: all 0.3s;
     }
 
-    .nav-links a:hover {
+    .nav-btn:hover, .nav-btn.active {
       color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--card-border);
     }
 
-    /* Hero Section */
+    /* Page View Mechanics */
+    .page {
+      display: none;
+      min-height: 80vh;
+      padding: 3rem 10%;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      animation: fadeIn 0.4s ease-in-out forwards;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .page.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hero Section (Page 1) */
     .hero {
-      min-height: 85vh;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 10%;
-      max-width: 1200px;
-      margin: 0 auto;
-      gap: 2rem;
+      gap: 3rem;
       flex-wrap: wrap-reverse;
+      width: 100%;
     }
 
     .hero-text {
@@ -162,85 +195,18 @@
       box-shadow: 0 0 30px rgba(255, 255, 255, 0.08);
     }
 
-    /* Authentic Social Portals */
-    .social-portals {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .portal-link {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      padding: 0.7rem 1.3rem;
-      border-radius: 30px;
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .portal-link:hover {
-      transform: translateY(-3px);
-    }
-
-    /* Authentic Instagram Style */
-    .portal-insta {
-      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-      box-shadow: 0 0 15px rgba(220, 39, 67, 0.3);
-    }
-
-    .portal-insta:hover {
-      box-shadow: 0 0 25px rgba(220, 39, 67, 0.6);
-    }
-
-    /* Authentic TikTok Style */
-    .portal-tiktok {
-      background: #000000;
-      border: 1px solid #25f4ee;
-      box-shadow: -2px 2px 10px rgba(37, 244, 238, 0.4), 2px -2px 10px rgba(254, 44, 85, 0.4);
-    }
-
-    .portal-tiktok:hover {
-      box-shadow: -3px 3px 15px rgba(37, 244, 238, 0.7), 3px -3px 15px rgba(254, 44, 85, 0.7);
-    }
-
-    .portal-link svg {
-      width: 20px;
-      height: 20px;
-      fill: #ffffff;
-    }
-
-    /* Sections */
-    .section {
-      padding: 4rem 10%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
+    /* General Page Layouts & Grid */
     .section-title {
-      font-size: 2rem;
-      margin-bottom: 2.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
       color: var(--primary);
-    }
-
-    .section-title::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--card-border);
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2rem;
+      width: 100%;
     }
 
     .card {
@@ -276,7 +242,7 @@
 
     .card-img {
       width: 100%;
-      height: 240px;
+      height: 250px;
       object-fit: cover;
       border-radius: 12px;
       margin-bottom: 1.2rem;
@@ -300,7 +266,7 @@
       color: var(--accent-silver);
     }
 
-    /* O/L Table Styling */
+    /* Table for Academics */
     .ol-table {
       width: 100%;
       border-collapse: collapse;
@@ -317,12 +283,9 @@
     .ol-table th {
       color: var(--primary);
       background: rgba(255, 255, 255, 0.03);
-      font-weight: 600;
     }
 
-    .ol-table td {
-      color: var(--text-muted);
-    }
+    .ol-table td { color: var(--text-muted); }
 
     .grade-badge {
       display: inline-block;
@@ -336,20 +299,54 @@
     .grade-b { background: rgba(33, 150, 243, 0.2); color: #64b5f6; border: 1px solid #2196f3; }
     .grade-c { background: rgba(158, 158, 158, 0.2); color: #e0e0e0; border: 1px solid #9e9e9e; }
 
-    /* Contact Details */
-    .contact-info p {
-      margin-bottom: 1rem;
-      font-size: 1rem;
-      color: var(--text-muted);
+    /* Authentic Social Portals */
+    .social-portals {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .portal-link {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.7rem 1.3rem;
+      border-radius: 30px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .portal-link:hover { transform: translateY(-3px); }
+
+    .portal-insta {
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      box-shadow: 0 0 15px rgba(220, 39, 67, 0.3);
+    }
+
+    .portal-tiktok {
+      background: #000000;
+      border: 1px solid #25f4ee;
+      box-shadow: -2px 2px 10px rgba(37, 244, 238, 0.4), 2px -2px 10px rgba(254, 44, 85, 0.4);
+    }
+
+    .portal-link svg {
+      width: 20px;
+      height: 20px;
+      fill: #ffffff;
     }
 
     /* Footer */
     footer {
       text-align: center;
-      padding: 3rem;
+      padding: 2rem;
       color: var(--text-muted);
       font-size: 0.9rem;
       border-top: 1px solid var(--card-border);
+      background: rgba(5, 5, 8, 0.8);
     }
   </style>
 </head>
@@ -361,37 +358,38 @@
     <div class="glow-ball two"></div>
   </div>
 
-  <!-- Navigation -->
+  <!-- Navigation Bar -->
   <nav>
-    <div class="logo">S.N. GUNAWARDENA</div>
+    <div class="logo" onclick="showPage('home')">S.N. GUNAWARDENA</div>
     <div class="nav-links">
-      <a href="#tech">Crypto & AI</a>
-      <a href="#leadership">Leadership</a>
-      <a href="#sports">Sports & Chess</a>
-      <a href="#academics">Academics</a>
-      <a href="#contact">Contact</a>
+      <button class="nav-btn active" onclick="showPage('home')">Main</button>
+      <button class="nav-btn" onclick="showPage('tech')">Crypto & AI</button>
+      <button class="nav-btn" onclick="showPage('leadership')">Leadership</button>
+      <button class="nav-btn" onclick="showPage('sports')">Sports & Chess</button>
+      <button class="nav-btn" onclick="showPage('academics')">Academics</button>
+      <button class="nav-btn" onclick="showPage('contact')">Contact</button>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <header class="hero">
-    <div class="hero-text">
-      <div class="hero-tag">// STRATEGIST • LEADER • INNOVATOR</div>
-      <h1>Hi, I'm <span>Sasantha Nichula Gunawardena</span></h1>
-      <p>A multi-disciplinary innovator blending algorithmic market analysis, AI software crafting, competitive chess strategy, martial arts, and high-level student governance.</p>
+  <!-- PAGE 1: MAIN / ABOUT ME -->
+  <main id="home" class="page active">
+    <div class="hero">
+      <div class="hero-text">
+        <div class="hero-tag">// STRATEGIST • LEADER • INNOVATOR</div>
+        <h1>Hi, I'm <span>Sasantha Nichula Gunawardena</span></h1>
+        <p>A multi-disciplinary innovator blending algorithmic market analysis, AI software crafting, competitive chess strategy, martial arts, and high-level student governance.</p>
+        <button class="nav-btn active" style="padding: 0.8rem 1.6rem; font-size: 1rem;" onclick="showPage('tech')">Explore Tech & Experience →</button>
+      </div>
+      <img src="photo1.jpg" alt="Sasantha Nichula Gunawardena" class="main-avatar">
     </div>
+  </main>
 
-    <!-- Main Profile Photo (Photo 1) -->
-    <img src="photo1.jpg" alt="Sasantha Nichula Gunawardena" class="main-avatar">
-  </header>
-
-  <!-- Crypto Trading & AI Engineering Section -->
-  <section id="tech" class="section">
+  <!-- PAGE 2: CRYPTO & AI -->
+  <section id="tech" class="page">
     <h2 class="section-title">Cryptocurrency Trading & AI Systems</h2>
     <div class="grid">
-      
       <div class="card">
-        <img src="photo5.jpg" alt="Trading & Tech Setup" class="card-img">
+        <img src="photo5.jpg" alt="Trading Setup" class="card-img">
         <h3>Precision Quantitative Trader</h3>
         <p>Expert in technical analysis, order block execution, and risk-managed perpetual contract trading (e.g., USDT pairs). Leverages structural market patterns and high-probability setups to capture macro and micro trends.</p>
         <div class="tags">
@@ -402,7 +400,7 @@
       </div>
 
       <div class="card">
-        <img src="photo6.jpg" alt="AI Development Environment" class="card-img">
+        <img src="photo6.jpg" alt="AI Development" class="card-img">
         <h3>AI Code Architect & Engineer</h3>
         <p>Combining high-level critical thinking with advanced AI orchestration tools to rapidly design, construct, and deploy sophisticated software applications and Web architectures from scratch.</p>
         <div class="tags">
@@ -411,32 +409,30 @@
           <span class="tag">Algorithmic Design</span>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- Leadership Section -->
-  <section id="leadership" class="section">
+  <!-- PAGE 3: LEADERSHIP -->
+  <section id="leadership" class="page">
     <h2 class="section-title">Leadership & Governance</h2>
     <div class="grid">
-      
       <div class="card">
         <img src="photo4.jpg" alt="Parliament Certificates" class="card-img">
         <h3>Student Parliament</h3>
         <ul>
-          <li><strong>Deputy Speaker</strong> (2025) – Provincial Parliament Member</li>
-          <li><strong>Minister</strong> of Student Skills & Innovations (2024)</li>
-          <li><strong>Deputy Minister</strong> of Student Skills & Innovations (2023)</li>
-          <li><strong>Speaker</strong> of School Student Parliament (150 votes) & Zonal Representative (2023)</li>
+          <li><strong>Deputy Speaker</strong> (2025) – Provincial Parliament Member[cite: 1]</li>
+          <li><strong>Minister</strong> of Student Skills & Innovations (2024)[cite: 1]</li>
+          <li><strong>Deputy Minister</strong> of Student Skills & Innovations (2023)[cite: 1]</li>
+          <li><strong>Speaker</strong> of School Student Parliament (150 votes) & Zonal Representative (2023)[cite: 1]</li>
         </ul>
       </div>
 
       <div class="card">
         <h3>School Leadership & Units</h3>
         <ul>
-          <li><strong>Senior Prefect</strong> (Serving since 2022)</li>
-          <li>Member of the <strong>School Traffic Warden Unit</strong></li>
-          <li><strong>ICT Excel Zonal Competition</strong> – Ranked Top 10</li>
+          <li><strong>Senior Prefect</strong> (Serving since 2022)[cite: 1]</li>
+          <li>Member of the <strong>School Traffic Warden Unit</strong>[cite: 1]</li>
+          <li><strong>ICT Excel Zonal Competition</strong> – Ranked Top 10[cite: 1]</li>
         </ul>
         <div class="tags">
           <span class="tag">Leadership</span>
@@ -444,120 +440,82 @@
           <span class="tag">ICT</span>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- Sports & Chess Section -->
-  <section id="sports" class="section">
+  <!-- PAGE 4: SPORTS & CHESS -->
+  <section id="sports" class="page">
     <h2 class="section-title">Sports & Tactical Disciplines</h2>
     <div class="grid">
-
       <div class="card">
         <img src="photo2.jpg" alt="Karate Performance" class="card-img">
         <h3>Karate (Shito-Ryu)</h3>
-        <p><strong>Rank:</strong> Brown Belt (2nd Kyu)</p>
+        <p><strong>Rank:</strong> Brown Belt (2nd Kyu)[cite: 1]</p>
         <br>
         <p><strong>Key Achievements:</strong></p>
         <ul>
-          <li>1st Place – SKSO Open Kata Championship</li>
-          <li>1st & 3rd Place – Shukokai Kata & Kumite Championship</li>
-          <li>1st & 1st Place – Eagle Shotokan Championship</li>
-          <li>1st & 3rd Place – Kyukai Championship</li>
-          <li>3rd Place – Gman Shotokan Kata Championship</li>
+          <li>1st Place – SKSO Open Kata Championship[cite: 1]</li>
+          <li>1st & 3rd Place – Shukokai Kata & Kumite Championship[cite: 1]</li>
+          <li>1st & 1st Place – Eagle Shotokan Championship[cite: 1]</li>
+          <li>1st & 3rd Place – Kyukai Championship[cite: 1]</li>
+          <li>3rd Place – Gman Shotokan Kata Championship[cite: 1]</li>
         </ul>
       </div>
 
       <div class="card">
-        <img src="photo3.jpg" alt="Chess Championship Match" class="card-img">
+        <img src="photo3.jpg" alt="Chess Match" class="card-img">
         <h3>FIDE Rated Chess Player</h3>
-        <p><strong>FIDE ID:</strong> 80840540</p>
-        <p><strong>Current Rating:</strong> 1400</p>
+        <p><strong>FIDE ID:</strong> 80840540[cite: 1]</p>
+        <p><strong>Current Rating:</strong> 1400[cite: 1]</p>
         <br>
         <p><strong>Competitive Participations:</strong></p>
         <ul>
-          <li>Sri Lankan National Youth Chess Championship (2023)</li>
-          <li>Novices Division Championship (2024)</li>
-          <li>Queen’s Chess Championship (2024)</li>
+          <li>Sri Lankan National Youth Chess Championship (2023)[cite: 1]</li>
+          <li>Novices Division Championship (2024)[cite: 1]</li>
+          <li>Queen’s Chess Championship (2024)[cite: 1]</li>
         </ul>
         <div class="tags">
           <span class="tag">FIDE 1400</span>
           <span class="tag">Tactical Strategy</span>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- Academics Section -->
-  <section id="academics" class="section">
+  <!-- PAGE 5: ACADEMICS -->
+  <section id="academics" class="page">
     <h2 class="section-title">Academic Qualifications</h2>
-    <div class="card">
+    <div class="card" style="width: 100%;">
       <h3>GCE O/L Examination Results</h3>
-      
-      <!-- O/L Results Table -->
       <table class="ol-table">
         <thead>
-          <tr>
-            <th>Subject</th>
-            <th>Grade</th>
-          </tr>
+          <tr><th>Subject</th><th>Grade</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Drama & Theatre</td>
-            <td><span class="grade-badge grade-a">A</span></td>
-          </tr>
-          <tr>
-            <td>Buddhism</td>
-            <td><span class="grade-badge grade-b">B</span></td>
-          </tr>
-          <tr>
-            <td>English Language</td>
-            <td><span class="grade-badge grade-b">B</span></td>
-          </tr>
-          <tr>
-            <td>Mathematics</td>
-            <td><span class="grade-badge grade-c">C</span></td>
-          </tr>
-          <tr>
-            <td>History</td>
-            <td><span class="grade-badge grade-c">C</span></td>
-          </tr>
-          <tr>
-            <td>Science</td>
-            <td><span class="grade-badge grade-c">C</span></td>
-          </tr>
-          <tr>
-            <td>Sinhala Language & Literature</td>
-            <td><span class="grade-badge grade-c">C</span></td>
-          </tr>
-          <tr>
-            <td>Business & Accounting Studies</td>
-            <td><span class="grade-badge grade-c">C</span></td>
-          </tr>
-          <tr>
-            <td>Information & Communication Technology (ICT)</td>
-            <td><span class="grade-badge grade-c">C</span></td>
-          </tr>
+          <tr><td>Drama & Theatre</td><td><span class="grade-badge grade-a">A</span></td></tr>
+          <tr><td>Buddhism</td><td><span class="grade-badge grade-b">B</span></td></tr>
+          <tr><td>English Language</td><td><span class="grade-badge grade-b">B</span></td></tr>
+          <tr><td>Mathematics</td><td><span class="grade-badge grade-c">C</span></td></tr>
+          <tr><td>History</td><td><span class="grade-badge grade-c">C</span></td></tr>
+          <tr><td>Science</td><td><span class="grade-badge grade-c">C</span></td></tr>
+          <tr><td>Sinhala Language & Literature</td><td><span class="grade-badge grade-c">C</span></td></tr>
+          <tr><td>Business & Accounting Studies</td><td><span class="grade-badge grade-c">C</span></td></tr>
+          <tr><td>Information & Communication Technology (ICT)</td><td><span class="grade-badge grade-c">C</span></td></tr>
         </tbody>
       </table>
-
       <br>
-      <p><strong>Education History:</strong> Ramukkana Vidyaloka K.V | Sussex College | JMC College</p>
+      <p><strong>Education History:</strong> Ramukkana Vidyaloka K.V | Sussex College | JMC College[cite: 1]</p>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="section">
+  <!-- PAGE 6: CONTACT -->
+  <section id="contact" class="page">
     <h2 class="section-title">Get in Touch</h2>
-    <div class="card contact-info">
-      <p>📍 <strong>Address:</strong> (1**/* B******, B**********), Sri Lanka</p>
-      <p>✉️ <strong>Email:</strong> sasanthagunawardena@gmail.com</p>
+    <div class="card contact-info" style="width: 100%;">
+      <p>📍 <strong>Address:</strong> (1**/* B******, B**********), Sri Lanka[cite: 1]</p>
+      <p>✉️ <strong>Email:</strong> sasanthagunawardena@gmail.com[cite: 1]</p>
       <br>
       <p><strong>Connect on Social Portals:</strong></p>
-      
-      <!-- Social Media Portals in Original Brand Colors -->
       <div class="social-portals">
         <a href="https://www.instagram.com/callme.sasantha?igsh=MXI0YzlqYTV4ZWE5bw==" target="_blank" class="portal-link portal-insta">
           <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -575,6 +533,38 @@
   <footer>
     <p>© Sasantha Nichula Gunawardena. All rights reserved.</p>
   </footer>
+
+  <!-- Page Switcher Script -->
+  <script>
+    function showPage(pageId) {
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+      });
+
+      // Deactivate all buttons
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      // Show requested page
+      const targetPage = document.getElementById(pageId);
+      if(targetPage) {
+        targetPage.classList.add('active');
+      }
+
+      // Highlight active button
+      const activeBtn = Array.from(document.querySelectorAll('.nav-btn')).find(
+        btn => btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(pageId)
+      );
+      if(activeBtn) {
+        activeBtn.classList.add('active');
+      }
+
+      // Scroll to top of view smoothly
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
 
 </body>
 </html>
