@@ -115,9 +115,9 @@
     /* Multi-Page Views */
     .page {
       display: none;
-      min-height: 82vh;
-      padding: 3rem 10%;
-      max-width: 1200px;
+      min-height: 85vh;
+      padding: 3rem 8%;
+      max-width: 1400px;
       margin: 0 auto;
       width: 100%;
       animation: fadeIn 0.4s ease-in-out forwards;
@@ -134,16 +134,16 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* PAGE 1: HERO LAYOUT (Matching Screenshot) */
+    /* PAGE 1: HERO LAYOUT (Large 50% Photo Split) */
     .hero-layout {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1fr 1fr;
       align-items: center;
-      gap: 3rem;
+      gap: 4rem;
       width: 100%;
     }
 
-    @media (max-width: 850px) {
+    @media (max-width: 950px) {
       .hero-layout {
         grid-template-columns: 1fr;
         text-align: center;
@@ -151,7 +151,7 @@
     }
 
     .hero-text h1 {
-      font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
       font-weight: 800;
       line-height: 1.1;
       margin-bottom: 1.5rem;
@@ -164,10 +164,9 @@
 
     .hero-text p {
       color: var(--text-muted);
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       line-height: 1.6;
       margin-bottom: 2.2rem;
-      max-width: 580px;
     }
 
     .hero-actions {
@@ -181,7 +180,7 @@
       background: var(--accent);
       color: var(--bg-dark);
       font-weight: 700;
-      padding: 0.8rem 2rem;
+      padding: 0.9rem 2.2rem;
       border-radius: 30px;
       border: none;
       font-size: 1rem;
@@ -201,68 +200,76 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      width: 100%;
     }
 
     .hero-image-wrapper::before {
       content: '';
       position: absolute;
-      width: 280px;
-      height: 340px;
+      width: 90%;
+      height: 90%;
       background: rgba(0, 240, 255, 0.08);
       border: 1px solid var(--card-border);
-      border-radius: 20px;
+      border-radius: 24px;
       z-index: 1;
       transform: rotate(-3deg);
     }
 
+    /* Main Portrait Image (Takes ~half screen width) */
     .portrait-img {
       position: relative;
       z-index: 2;
       width: 100%;
-      max-width: 320px;
-      height: 400px;
+      max-width: 480px;
+      height: 560px;
       object-fit: cover;
-      border-radius: 16px;
+      border-radius: 20px;
       border: 1px solid var(--card-border);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
     }
 
     /* General Grid & Cards */
     .section-title {
-      font-size: 2.2rem;
-      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      margin-bottom: 2.5rem;
       color: var(--accent);
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 2.5rem;
       width: 100%;
+    }
+
+    @media (max-width: 500px) {
+      .grid { grid-template-columns: 1fr; }
     }
 
     .card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 2rem;
+      border-radius: 20px;
+      padding: 2.2rem;
       transition: transform 0.3s, border-color 0.3s;
+      display: flex;
+      flex-direction: column;
     }
 
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-6px);
       border-color: var(--accent);
     }
 
     .card h3 {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       margin-bottom: 0.8rem;
       color: var(--text-white);
     }
 
     .card p, .card ul {
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 1rem;
       line-height: 1.6;
     }
 
@@ -271,26 +278,27 @@
       padding-left: 1.2rem;
     }
 
+    /* Large Photo Styling for Inner Sections (Takes ~1/2 card height) */
     .card-img {
       width: 100%;
-      height: 250px;
+      height: 400px;
       object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 1.2rem;
+      border-radius: 14px;
+      margin-bottom: 1.5rem;
       border: 1px solid var(--card-border);
     }
 
     .tags {
       display: flex;
-      gap: 0.5rem;
+      gap: 0.6rem;
       flex-wrap: wrap;
-      margin-top: 1rem;
+      margin-top: 1.2rem;
     }
 
     .tag {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-family: monospace;
-      padding: 0.3rem 0.8rem;
+      padding: 0.4rem 0.9rem;
       border-radius: 20px;
       background: rgba(0, 240, 255, 0.08);
       border: 1px solid var(--card-border);
@@ -302,11 +310,11 @@
       width: 100%;
       border-collapse: collapse;
       margin-top: 1rem;
-      font-size: 0.95rem;
+      font-size: 1rem;
     }
 
     .ol-table th, .ol-table td {
-      padding: 0.8rem 1rem;
+      padding: 0.9rem 1.2rem;
       text-align: left;
       border-bottom: 1px solid var(--card-border);
     }
@@ -320,10 +328,10 @@
 
     .grade-badge {
       display: inline-block;
-      padding: 0.2rem 0.6rem;
+      padding: 0.25rem 0.7rem;
       border-radius: 6px;
       font-weight: bold;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       color: var(--accent);
       border: 1px solid var(--card-border);
       background: rgba(0, 240, 255, 0.08);
@@ -332,30 +340,30 @@
     /* Social Links */
     .social-portals {
       display: flex;
-      gap: 1rem;
-      margin-top: 1.2rem;
+      gap: 1.2rem;
+      margin-top: 1.5rem;
       flex-wrap: wrap;
     }
 
     .portal-link {
       display: flex;
       align-items: center;
-      gap: 0.7rem;
-      padding: 0.7rem 1.4rem;
+      gap: 0.8rem;
+      padding: 0.8rem 1.6rem;
       border-radius: 30px;
       color: var(--bg-dark);
       background: var(--accent);
       text-decoration: none;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 1rem;
       transition: transform 0.3s;
     }
 
     .portal-link:hover { transform: translateY(-3px); }
 
     .portal-link svg {
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       fill: var(--bg-dark);
     }
 
@@ -391,7 +399,7 @@
     </div>
   </nav>
 
-  <!-- PAGE 1: MAIN / HERO (Layout like Reference Screenshot) -->
+  <!-- PAGE 1: MAIN / HERO (50% Screen Split Layout) -->
   <main id="home" class="page active">
     <div class="hero-layout">
       
@@ -405,7 +413,7 @@
         </div>
       </div>
 
-      <!-- Image Section -->
+      <!-- Image Section (Enlarged to ~50% view) -->
       <div class="hero-image-wrapper">
         <img src="photo1.jpg" alt="Sasantha Nichula Gunawardena" class="portrait-img">
       </div>
