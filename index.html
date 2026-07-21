@@ -189,12 +189,14 @@
 
     /* TYPING ANIMATION STYLES */
     .typing-text {
+      display: block; /* Pushes onto its own line downwards */
       background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       border-right: 3px solid var(--accent-primary);
       padding-right: 4px;
       animation: blinkCursor 0.75s step-end infinite;
+      word-break: break-word;
     }
 
     @keyframes blinkCursor {
@@ -619,7 +621,7 @@
   <main id="home" class="page active">
     <div class="hero-layout">
       <div class="hero-text">
-        <h1>Hello, I'm Sasantha.<br><span id="typingTarget" class="typing-text"></span></h1>
+        <h1>Hello, I'm Sasantha.<span id="typingTarget" class="typing-text"></span></h1>
         <p>Combining quantitative market analysis, artificial intelligence software crafting, competitive chess, martial arts, and provincial student governance.</p>
         <div class="hero-actions">
           <button class="btn-primary" onclick="showPage('contact')">Get In Touch</button>
