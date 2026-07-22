@@ -836,21 +836,21 @@
         </div>
       </div>
 
-      <!-- Option B: Direct Email Application Trigger (mailto) -->
+      <!-- DIRECT GMAIL WEB REDIRECT CONTACT FORM -->
       <div class="card">
         <h3>Send a Direct Message</h3>
-        <form class="contact-form" action="mailto:sasanthagunawardena@gmail.com" method="POST" enctype="text/plain">
+        <form class="contact-form" onsubmit="handleDirectEmail(event)">
           <div class="form-group">
             <label for="name">Your Name</label>
-            <input type="text" id="name" name="Name" class="form-control" placeholder="Enter your name" required>
+            <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
           </div>
           <div class="form-group">
             <label for="email">Your Email</label>
-            <input type="email" id="email" name="Email" class="form-control" placeholder="Enter your email" required>
+            <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
           </div>
           <div class="form-group">
             <label for="message">Your Message</label>
-            <textarea id="message" name="Message" class="form-control" placeholder="Type your message here..." required></textarea>
+            <textarea id="message" class="form-control" placeholder="Type your message here..." required></textarea>
           </div>
           <button type="submit" class="btn-primary" style="align-self: flex-start; margin-top: 0.5rem;">Send Message</button>
         </form>
@@ -872,6 +872,32 @@
 
   <!-- Scripts -->
   <script>
+    /* DIRECT GMAIL WEB COMPOSER HANDLER */
+    function handleDirectEmail(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const userEmail = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+      const body = encodeURIComponent(`Sender Name: ${name}\nSender Email: ${userEmail}\n\nMessage:\n${message}`);
+      
+      // Gmail Web App composer URL
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=sasanthagunawardena@gmail.com&su=${subject}&body=${body}`;
+      
+      // Standard mailto fallback
+      const mailtoUrl = `mailto:sasanthagunawardena@gmail.com?subject=${subject}&body=${body}`;
+
+      // Open Gmail Web in new tab, or use mailto if on mobile/unsupported device
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (!isMobile) {
+        window.open(gmailUrl, '_blank');
+      } else {
+        window.location.href = mailtoUrl;
+      }
+    }
+
     /* Navigation Functionality */
     function showPage(pageId) {
       document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
